@@ -32,18 +32,22 @@ end
 
 # commands
 if ARGV[0] == "-h" || ARGV[0] == "help"
-  help and exit(0)
+  help
+  exit(0)
 end
 
 # validations
 file_path = ARGV[0]
-help and exit(1) if file_path.nil?
+if file_path.nil?
+  help
+  exit(1)
+end
 
 file = File.expand_path(file_path)
 unless File.exist?(file)
   help
   puts "File not found: #{file}"
-  exit 1
+  exit(1)
 end
 
 # proessing file and output
